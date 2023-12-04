@@ -1,0 +1,239 @@
+(32, 9600, 9600)
+8
+ConvAutoencoder5Conv2ds(
+  (encoder): Sequential(
+    (0): Conv2d(2, 16, kernel_size=(2, 2), stride=(2, 2))
+    (1): ReLU(inplace=True)
+    (2): Conv2d(16, 32, kernel_size=(2, 2), stride=(2, 2))
+    (3): ReLU(inplace=True)
+    (4): Conv2d(32, 64, kernel_size=(2, 2), stride=(2, 2))
+    (5): ReLU(inplace=True)
+    (6): Conv2d(64, 128, kernel_size=(2, 2), stride=(2, 2))
+    (7): ReLU(inplace=True)
+    (8): Conv2d(128, 256, kernel_size=(2, 2), stride=(2, 2))
+    (9): ReLU(inplace=True)
+  )
+  (latentspace): Sequential(
+    (0): Conv2d(256, 128, kernel_size=(5, 5), stride=(1, 1))
+    (1): ReLU(inplace=True)
+    (2): Conv2d(128, 128, kernel_size=(5, 5), stride=(1, 1))
+    (3): ReLU(inplace=True)
+    (4): Conv2d(128, 256, kernel_size=(5, 5), stride=(1, 1))
+    (5): ReLU(inplace=True)
+  )
+  (decoder): Sequential(
+    (0): ConvTranspose2d(256, 128, kernel_size=(2, 2), stride=(2, 2))
+    (1): ReLU(inplace=True)
+    (2): ConvTranspose2d(128, 64, kernel_size=(2, 2), stride=(2, 2))
+    (3): ReLU(inplace=True)
+    (4): ConvTranspose2d(64, 32, kernel_size=(2, 2), stride=(2, 2))
+    (5): ReLU(inplace=True)
+    (6): ConvTranspose2d(32, 16, kernel_size=(2, 2), stride=(2, 2))
+    (7): ReLU(inplace=True)
+    (8): ConvTranspose2d(16, 2, kernel_size=(2, 2), stride=(2, 2))
+    (9): Identity()
+  )
+)
+1699370891.995956
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [1/50], Loss: 1.2443
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [2/50], Loss: 1.2324
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [3/50], Loss: 1.2192
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [4/50], Loss: 1.2005
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [5/50], Loss: 1.1570
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [6/50], Loss: 1.0476
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [7/50], Loss: 0.8842
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [8/50], Loss: 1.2642
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [9/50], Loss: 0.7800
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [10/50], Loss: 0.8215
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [11/50], Loss: 0.8893
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [12/50], Loss: 0.9202
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [13/50], Loss: 0.9199
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [14/50], Loss: 0.8932
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [15/50], Loss: 0.8367
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [16/50], Loss: 0.7419
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [17/50], Loss: 0.6102
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [18/50], Loss: 0.5282
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [19/50], Loss: 0.6793
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [20/50], Loss: 0.5833
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [21/50], Loss: 0.4587
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [22/50], Loss: 0.4809
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [23/50], Loss: 0.5125
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [24/50], Loss: 0.5027
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [25/50], Loss: 0.4539
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [26/50], Loss: 0.3975
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [27/50], Loss: 0.3894
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [28/50], Loss: 0.4260
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [29/50], Loss: 0.3894
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [30/50], Loss: 0.3533
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [31/50], Loss: 0.3656
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [32/50], Loss: 0.3694
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [33/50], Loss: 0.3449
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [34/50], Loss: 0.3182
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [35/50], Loss: 0.3247
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [36/50], Loss: 0.3239
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [37/50], Loss: 0.2996
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [38/50], Loss: 0.3019
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [39/50], Loss: 0.3067
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [40/50], Loss: 0.2929
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [41/50], Loss: 0.2875
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [42/50], Loss: 0.2971
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [43/50], Loss: 0.2864
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [44/50], Loss: 0.2862
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [45/50], Loss: 0.2914
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [46/50], Loss: 0.2837
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [47/50], Loss: 0.2843
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [48/50], Loss: 0.2868
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [49/50], Loss: 0.2801
+torch.Size([8, 2, 9600, 9600])
+torch.Size([8, 9600, 2, 9600])
+torch.Size([8, 2, 9600, 9600])
+Epoch [50/50], Loss: 0.2830
+Training time: 8214.947973251343
+saved model name: /home/dg321/gitTest/PRI/irp/interpolation_code_example_2D/models/autoencoderBatches2T_Velocity_50epochs_8batchsize_lr0.003.pth

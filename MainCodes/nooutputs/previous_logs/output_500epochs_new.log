@@ -1,0 +1,50 @@
+(3, 9600, 9600)
+ConvAutoencoder5Conv2ds(
+  (encoder): Sequential(
+    (0): Conv2d(1, 16, kernel_size=(2, 2), stride=(2, 2))
+    (1): ReLU(inplace=True)
+    (2): Conv2d(16, 32, kernel_size=(2, 2), stride=(2, 2))
+    (3): ReLU(inplace=True)
+    (4): Conv2d(32, 64, kernel_size=(2, 2), stride=(2, 2))
+    (5): ReLU(inplace=True)
+    (6): Conv2d(64, 128, kernel_size=(2, 2), stride=(2, 2))
+    (7): ReLU(inplace=True)
+    (8): Conv2d(128, 256, kernel_size=(2, 2), stride=(2, 2))
+    (9): ReLU(inplace=True)
+  )
+  (decoder): Sequential(
+    (0): ConvTranspose2d(256, 128, kernel_size=(2, 2), stride=(2, 2))
+    (1): ReLU(inplace=True)
+    (2): ConvTranspose2d(128, 64, kernel_size=(2, 2), stride=(2, 2))
+    (3): ReLU(inplace=True)
+    (4): ConvTranspose2d(64, 32, kernel_size=(2, 2), stride=(2, 2))
+    (5): ReLU(inplace=True)
+    (6): ConvTranspose2d(32, 16, kernel_size=(2, 2), stride=(2, 2))
+    (7): ReLU(inplace=True)
+    (8): ConvTranspose2d(16, 1, kernel_size=(2, 2), stride=(2, 2))
+    (9): Sigmoid()
+  )
+)
+1698182091.491897
+torch.Size([1, 1, 9600, 9600])
+torch.Size([1, 1, 9600, 9600])
+torch.Size([1, 1, 9600, 9600])
+torch.Size([1, 1, 9600, 9600])
+Traceback (most recent call last):
+  File "/home/dg321/gitTest/PRI/irp/interpolation_code_example_2D/model_training.py", line 109, in <module>
+    outputs = autoencoder(d)
+  File "/home/dg321/anaconda3/envs/icdss/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/dg321/gitTest/PRI/irp/interpolation_code_example_2D/model_training.py", line 58, in forward
+    x = self.encoder(x)
+  File "/home/dg321/anaconda3/envs/icdss/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/dg321/anaconda3/envs/icdss/lib/python3.8/site-packages/torch/nn/modules/container.py", line 141, in forward
+    input = module(input)
+  File "/home/dg321/anaconda3/envs/icdss/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/dg321/anaconda3/envs/icdss/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 447, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/home/dg321/anaconda3/envs/icdss/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 443, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+KeyboardInterrupt

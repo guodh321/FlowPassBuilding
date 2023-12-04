@@ -1,0 +1,37 @@
+/home/dg321/gitTest/PRI/irp/fortran_building_volume_frac_codes/f2py_build.py:26: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  xy[nod,0] = (np.float(i-1)/np.float(nx-1) ) * 4.0 # length of domain is 2.0
+/home/dg321/gitTest/PRI/irp/fortran_building_volume_frac_codes/f2py_build.py:27: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  xy[nod,1] = (np.float(j-1)/np.float(ny-1) ) * 4.0 # width of domain is 2.0
+start running
+vol_frac,nbuild = python_building_vol_frac(xy,min_dx,max_dx,size_gap,boarders_size,nbuilding,nit_build,nx_fix,ny_fix,[nonods])
+
+Wrapper for ``python_building_vol_frac``.
+
+Parameters
+----------
+xy : input rank-2 array('f') with bounds (nonods,2)
+min_dx : input float
+max_dx : input float
+size_gap : input float
+boarders_size : input rank-1 array('f') with bounds (3)
+nbuilding : input int
+nit_build : input int
+nx_fix : input int
+ny_fix : input int
+
+Other Parameters
+----------------
+nonods : input int, optional
+    Default: shape(xy, 0)
+
+Returns
+-------
+vol_frac : rank-1 array('f') with bounds (nonods)
+nbuild : int
+
+Traceback (most recent call last):
+  File "/home/dg321/gitTest/PRI/irp/fortran_building_volume_frac_codes/f2py_build.py", line 42, in <module>
+    vol_frac,nbuild = building_volume_frac.python_building_vol_frac(xy,min_dx,max_dx,size_gap, boarders_size, nbuilding, nit_build, nx_fix, ny_fix, nonods)  
+OverflowError: Python int too large to convert to C int
