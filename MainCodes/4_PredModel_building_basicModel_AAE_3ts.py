@@ -30,14 +30,18 @@ Latent_data_Building = Latent_data_Building.reshape(1, 16, 64, 64)
 print(Latent_data_Building.shape)
 
 
-n_sampels = 80
-t_gaps_sampels = 5
+n_sampels = 200
+t_gaps_sampels = 1
 dt = 5
 ntimes = 3
 
-num_epochs = 6000 # 1000
-batch_size = 1  # Choose your desired batch size
-model_saved_path = root_path + 'Flow_Data/PredictionModel/autoencoder_Flow_PredictionLatent_{}epochs_AAEVen80Samples_3ts.pth'.format(num_epochs)
+num_epochs = 10000
+batch_size = 16  # Choose your desired batch size
+model_saved_path = root_path + 'Flow_Data/PredictionModel/autoencoder_Flow_PredictionLatent_{}epochs_AAEVen200Samples_3ts.pth'.format(num_epochs)
+
+lr_ae = 0.001
+lr_d = 0.001
+lr_ed = 0.001
 
 samples_training = []
 samples_training_X = []
@@ -189,6 +193,7 @@ class Decoder(nn.Module):
     def forward(self, x):
         return self.model(x)
 
+# Discriminator
 class Discriminator(nn.Module):
     def __init__(self):
         super(Discriminator, self).__init__()
@@ -216,10 +221,6 @@ class AdversarialAutoencoder(nn.Module):
         decoded = self.decoder(encoded)
         discriminated = self.discriminator(encoded)
         return decoded, discriminated
-    
-
-
-
 
 # Instantiate components and move to GPU
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -234,15 +235,14 @@ reconstruction_loss_fn = nn.MSELoss()
 adversarial_loss_fn = nn.BCELoss()
 
 # Optimizers
-lr_ae = 0.001
-lr_d = 0.001
-
 optimizer_ae = optim.Adam(list(encoder.parameters()) + list(decoder.parameters()), lr=lr_ae)
 optimizer_d = optim.Adam(discriminator.parameters(), lr=lr_d)
+optimizer_ed = optim.Adam(encoder.parameters(), lr=lr_ed)
 
 # Lists to store losses for plotting
 all_losses_ae = []
 all_losses_d = []
+all_losses_ed = []
 
 # Print the GPU device
 print(f"Running on GPU: {torch.cuda.get_device_name(torch.cuda.current_device())}")
@@ -250,6 +250,7 @@ print(f"Running on GPU: {torch.cuda.get_device_name(torch.cuda.current_device())
 for epoch in range(num_epochs):
     epoch_losses_ae = []
     epoch_losses_d = []
+    epoch_losses_ed = []
 
     for batch in data_loader:
         inputs, targets = batch['input'].to(device), batch['target'].to(device)
@@ -275,22 +276,34 @@ for epoch in range(num_epochs):
         optimizer_d.step()
         epoch_losses_d.append(loss_d.item())
 
+        # Train encoder/generator
+        optimizer_ed.zero_grad()
+        with torch.no_grad():
+            encoded_fool = encoder(inputs).detach()
+        fake_output = discriminator(encoded_fool)
+        loss_ed = adversarial_loss_fn(fake_output, torch.ones_like(fake_output).to(device))
+        loss_ed.backward()
+        optimizer_ed.step()
+        epoch_losses_ed.append(loss_ed.item())
+
     # Average losses over the epoch
     avg_loss_ae = sum(epoch_losses_ae) / len(epoch_losses_ae)
     avg_loss_d = sum(epoch_losses_d) / len(epoch_losses_d)
+    avg_loss_ed = sum(epoch_losses_ed) / len(epoch_losses_ed)
 
     # Print the average loss at the end of each epoch
-    print(f'Epoch [{epoch+1}/{num_epochs}], AE Loss: {avg_loss_ae:.4f}, D Loss: {avg_loss_d:.4f}')
+    print(f'Epoch [{epoch+1}/{num_epochs}], AE Loss: {avg_loss_ae:.4f}, D Loss: {avg_loss_d:.4f}, ED Loss: {avg_loss_ed:.4f}')
 
     # Record the losses for plotting
     all_losses_ae.append(avg_loss_ae)
     all_losses_d.append(avg_loss_d)
+    all_losses_ed.append(avg_loss_ed)
 
 # Plot the losses separately
 fig = plt.figure(figsize=(10, 5))
 
 # Autoencoder Loss Plot
-plt.subplot(1, 2, 1)
+plt.subplot(1, 3, 1)
 plt.plot(all_losses_ae, label='Autoencoder Loss')
 plt.title('Autoencoder Loss Over Epochs')
 plt.xlabel('Epoch')
@@ -298,9 +311,17 @@ plt.ylabel('Loss')
 plt.legend()
 
 # Discriminator Loss Plot
-plt.subplot(1, 2, 2)
+plt.subplot(1, 3, 2)
 plt.plot(all_losses_d, label='Discriminator Loss', color='orange')
 plt.title('Discriminator Loss Over Epochs')
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.legend()
+
+# ED Loss Plot
+plt.subplot(1, 3, 3)
+plt.plot(all_losses_ed, label='Generator Loss')
+plt.title('Generator Loss Over Epochs')
 plt.xlabel('Epoch')
 plt.ylabel('Loss')
 plt.legend()
@@ -312,6 +333,7 @@ plt.close(fig)
 print("Training finished.")
 aae_model = aae_model.cpu()
 print("Moved model back to cpu.")
+
 
 torch.save(aae_model.state_dict(), model_saved_path)  ### PredictionMulti
 print("Finished model: ", model_saved_path)
