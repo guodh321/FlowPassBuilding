@@ -38,3 +38,17 @@ MainCodes/checkpoint_900.pth
 MainCodes/models/*
 fortran_building_volume_frac_codes/*
 wandb/*
+MainCodes/Flow_past_buildings_499.vtu
+MainCodes/nooutputs/*
+MainCodes/torchlogs/*
+MainCodes/u2r.cpython-38-x86_64-linux-gnu.so
+MainCodes/u2r2.so
+MainCodes/u2rNew.cpython-38-x86_64-linux-gnu.so
+MainCodes/unstruc_mesh_2_regular_grid_new
+MainCodes/unstruc_mesh_2_regular_grid_new-1.f90
+MainCodes/unstruc_mesh_2_regular_grid_new_old.f90
+MainCodes/velocity.png
+MainCodes/velocity_absorption.png
+MainCodes/vol_frac_plot_9600_9600_buildings500.npy
+MainCodes/wandb/
+artifacts/
