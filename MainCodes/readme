@@ -1,0 +1,12 @@
+1. to compile the fortran library for python to use (u2r is the library):
+python3 -m numpy.f2py -c unstruc_mesh_2_regular_grid_new.f90 -m u2r
+
+#old way
+#f2py -c unstruc_mesh_2_regular_grid_new.f90 -m u2r
+
+2. to run the interpolation test (needs vtktools.py):
+python3 interpolation.py
+
+to compile fortran library in fortran (probably won't need this):
+gfortran -fdefault-real-8 -o unstruc_mesh_2_regular_grid_new unstruc_mesh_2_regular_grid_new.f90
+

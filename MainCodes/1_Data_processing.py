@@ -42,8 +42,8 @@ print(sampelYs_stacked.shape)
 
 
 # save 
-np.save("/home/dg321/gitTest/PRI/irp/Flow_Data/"+ foldername + "/sampelXs_stacked.npy", sampelXs_stacked)
-np.save("/home/dg321/gitTest/PRI/irp/Flow_Data/"+ foldername + "/sampelYs_stacked.npy", sampelYs_stacked)
+np.save("/home/dg321/gitTest/PRI/irp/Flow_Data/"+ foldername + "/sampelXs_stacked.npy", sampelXs_stacked)   # U component
+np.save("/home/dg321/gitTest/PRI/irp/Flow_Data/"+ foldername + "/sampelYs_stacked.npy", sampelYs_stacked)   # V component
 
 
 # Train and test split and normalization ... to get latent variable finally
