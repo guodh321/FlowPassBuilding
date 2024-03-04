@@ -53,3 +53,6 @@ MainCodes/vol_frac_plot_9600_9600_buildings500.npy
 MainCodes/wandb/
 artifacts/
 MainCodes/CNN-slugs scaled seed 3D-v4-morelayers.ipynb
+MainCodes/model_code.py
+MainCodes/model_structure
+MainCodes/model_structure.png
