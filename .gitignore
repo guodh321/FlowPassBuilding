@@ -56,3 +56,5 @@ MainCodes/CNN-slugs scaled seed 3D-v4-morelayers.ipynb
 MainCodes/model_code.py
 MainCodes/model_structure
 MainCodes/model_structure.png
+MainCodes/aae_model.pth
+MainCodes/convlstm.pth
