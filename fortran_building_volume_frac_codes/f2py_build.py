@@ -11,8 +11,8 @@ print(t0)
 
 #nx=200
 #ny=100
-nx=9600
-ny=9600
+nx=256
+ny=256
 nonods=nx*ny
 #x = np.zeros(nonods)
 #y = np.zeros(nonods)

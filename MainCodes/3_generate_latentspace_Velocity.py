@@ -11,24 +11,24 @@ os.environ["CUDA_VISIBLE_DEVICES"] = f"{4}"
 
 
 ### 256x256
-datasetFolder = 'Flow_Data'
-xysize = 256
-ntimesteps = 501
-samples = []
-for i in range(ntimesteps):
-    s = np.load('/home/dg321/gitTest/PRI/irp/FlowPassBuilding/' + datasetFolder + '/InterpolatedResult256/InterpolatedResult256Raw/FpB_Interpolated_t{}_Velocity_{}_{}.npy'.format(
-        i, xysize, xysize))
-    samples.append(s)
-    print(s.shape)
-
-## 384x384
-# datasetFolder = 'Flow_Data_9_9'
-# xysize = 384
-# ntimesteps = 399
+# datasetFolder = 'Flow_Data'
+# xysize = 256
+# ntimesteps = 501
 # samples = []
 # for i in range(ntimesteps):
-#     s = np.load('/home/dg321/gitTest/PRI/irp/FlowPassBuilding/' + datasetFolder + '/FpB_Interpolated_Velocity_384_384/FpB_Interpolated_t{}_Velocity_{}_{}.npy'.format(i, xysize, xysize))
+#     s = np.load('/home/dg321/gitTest/PRI/irp/FlowPassBuilding/' + datasetFolder + '/InterpolatedResult256/InterpolatedResult256Raw/FpB_Interpolated_t{}_Velocity_{}_{}.npy'.format(
+#         i, xysize, xysize))
 #     samples.append(s)
+#     print(s.shape)
+
+## 384x384
+datasetFolder = 'Flow_Data_9_9'
+xysize = 384
+ntimesteps = 399
+samples = []
+for i in range(ntimesteps):
+    s = np.load('/home/dg321/gitTest/PRI/irp/FlowPassBuilding/' + datasetFolder + '/FpB_Interpolated_Velocity_384_384/FpB_Interpolated_t{}_Velocity_{}_{}.npy'.format(i, xysize, xysize))
+    samples.append(s)
 
 # Define the autoencoder model
 hid1 = 20*2
@@ -141,7 +141,7 @@ latent_samples_stacked = np.stack(latent_samples)
 
 print(latent_samples_stacked.shape)
 
-savepath = '/home/dg321/gitTest/PRI/irp/FlowPassBuilding/' + datasetFolder + '/Latent_data_Velocity_{}_{}_23232.npy'.format(xysize, xysize)
+savepath = '/home/dg321/gitTest/PRI/irp/FlowPassBuilding/' + datasetFolder + '/Latent_data_Velocity_{}_{}_24848.npy'.format(xysize, xysize)
 
 np.save(savepath, latent_samples_stacked)
 print('Finished: ' + savepath)
