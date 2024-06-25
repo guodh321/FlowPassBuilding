@@ -58,3 +58,23 @@ MainCodes/model_structure
 MainCodes/model_structure.png
 MainCodes/aae_model.pth
 MainCodes/convlstm.pth
+3dData/
+BubbleML/
+Building_Data/
+MainCodes/66animation_5fps.mp4
+MainCodes/99animation_5fps.mp4
+MainCodes/animation.gif
+MainCodes/aoldscripts/
+MainCodes/dataset_256.joblib
+MainCodes/dataset_256.pth
+MainCodes/dataset_384.pth
+MainCodes/generator.pth
+MainCodes/my_animation_fps5.mp4
+saved_variables/
+
+
+# large files
+MainCodes/4_Predicting_AE_conv3d.ipynb
+MainCodes/4_Predicting_ConvLSTM.ipynb
+MainCodes/4_Predicting_AE.ipynb
+MainCodes/4_Predicting_basicModel_AAE.ipynb

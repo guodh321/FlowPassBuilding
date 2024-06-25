@@ -1,4 +1,5 @@
 import building_volume_frac
+import matplotlib.pyplot as plt
 import numpy as np
 import time 
 
@@ -28,16 +29,18 @@ print("start running")
 for j in range(ny): 
    for i in range(nx): 
       nod= i + j*nx
-      xy[nod,0] = (np.float(i-1)/np.float(nx-1) ) * 4.0 # length of domain is 2.0 
-      xy[nod,1] = (np.float(j-1)/np.float(ny-1) ) * 4.0 # width of domain is 2.0 
+    #   xy[nod,0] = (np.float(i-1)/np.float(nx-1) ) * 2.0 # length of domain is 2.0 
+    #   xy[nod,1] = (np.float(j-1)/np.float(ny-1) ) * 2.0 # width of domain is 2.0
+      xy[nod,0] = (float(i-1)/float(nx-1) ) * 2.0 # length of domain is 2.0 
+      xy[nod,1] = (float(j-1)/float(ny-1) ) * 2.0 # width of domain is 2.0 
 
 min_dx = 0.01 # Min building size.
 max_dx = 0.08 # Max building size.
-size_gap = 0.08 # Gap between buildings. 
-nbuilding = 2000 # no of buildings to aim for
-nit_build = 1000 # no of times to try to produce a building
-nx_fix = 400 # no of cells in x-direction of the fixed mesh used for generating buildings in buildings code. 
-ny_fix = 400 # no of cells in y-direction of the fixed mesh used for generating buildings in buildings code. 
+size_gap = 0.02 # Gap between buildings. 
+nbuilding = 200 # no of buildings to aim for
+nit_build = 500 # no of times to try to produce a building
+nx_fix = 8 # no of cells in x-direction of the fixed mesh used for generating buildings in buildings code. 
+ny_fix = 8 # no of cells in y-direction of the fixed mesh used for generating buildings in buildings code. 
 
 #print "split_levels", split_levels
 print (building_volume_frac.python_building_vol_frac.__doc__)
@@ -53,5 +56,6 @@ for j in range(ny): #do j=1,ny
 vol_frac_plot = vol_frac.reshape((ny,nx))
 
 print("Training time:", time.time()-t0)
-np.save('./fortran_building_volume_frac_codes/vol_frac_plot_{}_{}_buildings{}_mindx{}_maxdx{}__new1.npy'.format(nx,ny,nbuilding, int(min_dx*100), int(max_dx*100)), vol_frac_plot)
+np.save('/home/dg321/gitTest/PRI/irp/FlowPassBuilding/Bulding_Data/vol_frac_plot_{}_{}_buildings{}_mindx{}_maxdx{}__new1.npy'.format(nx,ny,nbuilding, int(min_dx*100), int(max_dx*100)), vol_frac_plot)
+plt.imsave('/home/dg321/gitTest/PRI/irp/FlowPassBuilding/Bulding_Data/vol_frac_plot_{}_{}_buildings{}_mindx{}_maxdx{}__new1.jpg'.format(nx,ny,nbuilding, int(min_dx*100), int(max_dx*100)), vol_frac_plot)
 print("Finished")

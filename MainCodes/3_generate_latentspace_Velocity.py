@@ -6,29 +6,29 @@ import os
 
 import wandb
 
-os.environ["CUDA_VISIBLE_DEVICES"] = f"{4}"
+os.environ["CUDA_VISIBLE_DEVICES"] = f"{5}"
 
 
 
-### 256x256
-# datasetFolder = 'Flow_Data'
-# xysize = 256
-# ntimesteps = 501
-# samples = []
-# for i in range(ntimesteps):
-#     s = np.load('/home/dg321/gitTest/PRI/irp/FlowPassBuilding/' + datasetFolder + '/InterpolatedResult256/InterpolatedResult256Raw/FpB_Interpolated_t{}_Velocity_{}_{}.npy'.format(
-#         i, xysize, xysize))
-#     samples.append(s)
-#     print(s.shape)
-
-## 384x384
-datasetFolder = 'Flow_Data_9_9'
-xysize = 384
-ntimesteps = 399
+## 256x256
+datasetFolder = 'Flow_Data'
+xysize = 256
+ntimesteps = 501
 samples = []
 for i in range(ntimesteps):
-    s = np.load('/home/dg321/gitTest/PRI/irp/FlowPassBuilding/' + datasetFolder + '/FpB_Interpolated_Velocity_384_384/FpB_Interpolated_t{}_Velocity_{}_{}.npy'.format(i, xysize, xysize))
+    s = np.load('/home/dg321/gitTest/PRI/irp/FlowPassBuilding/' + datasetFolder + '/InterpolatedResult256/InterpolatedResult256Raw/FpB_Interpolated_t{}_Velocity_{}_{}.npy'.format(
+        i, xysize, xysize))
     samples.append(s)
+    print(s.shape)
+
+# ## 384x384
+# datasetFolder = 'Flow_Data_9_9'
+# xysize = 384
+# ntimesteps = 399
+# samples = []
+# for i in range(ntimesteps):
+#     s = np.load('/home/dg321/gitTest/PRI/irp/FlowPassBuilding/' + datasetFolder + '/FpB_Interpolated_Velocity_384_384/FpB_Interpolated_t{}_Velocity_{}_{}.npy'.format(i, xysize, xysize))
+#     samples.append(s)
 
 # Define the autoencoder model
 hid1 = 20*2
@@ -59,7 +59,8 @@ class Autoencoder(nn.Module):
             nn.Conv2d(hid6, 2, kernel_size=3, stride=1, padding=1),#7 - Smoothing the change in number of channels; no reduction in output size
             #We should finish with the same number of channels of the input (4)
             # nn.LeakyReLU(negative_slope=0.2)
-            nn.Tanh()
+            # nn.Tanh()
+            nn.Identity()
         )
  
         # Decoder
@@ -97,7 +98,8 @@ print(autoencoder)
 
 # Load the saved autoencoder
 run = wandb.init()
-artifact = run.use_artifact('guodh/compression - Containing kernel size 3/model:v8', type='model')
+# artifact = run.use_artifact('guodh/compression - Containing kernel size 3/model:v8', type='model')   # Tanh()
+artifact = run.use_artifact('guodh/compression - 2 latent channels 1-4 xy size/model:v11', type='model')   # Identity()
 artifact_dir = artifact.download()
 
 # Load the model
@@ -141,7 +143,8 @@ latent_samples_stacked = np.stack(latent_samples)
 
 print(latent_samples_stacked.shape)
 
-savepath = '/home/dg321/gitTest/PRI/irp/FlowPassBuilding/' + datasetFolder + '/Latent_data_Velocity_{}_{}_24848.npy'.format(xysize, xysize)
+# savepath = '/home/dg321/gitTest/PRI/irp/FlowPassBuilding/' + datasetFolder + '/Latent_data_Velocity_{}_{}_24848_identitylatent.npy'.format(xysize, xysize)
+savepath = '/home/dg321/gitTest/PRI/irp/FlowPassBuilding/' + datasetFolder + '/Latent_data_Velocity_{}_{}_23232_identitylatent.npy'.format(xysize, xysize)
 
 np.save(savepath, latent_samples_stacked)
 print('Finished: ' + savepath)
