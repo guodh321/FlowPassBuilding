@@ -73,8 +73,16 @@ MainCodes/my_animation_fps5.mp4
 saved_variables/
 
 
+MainCodes/66animation_5fps_longer60ts.mp4
+MainCodes/99animation_5fps_longer60ts.mp4
+Testing/
+
+
 # large files
 MainCodes/4_Predicting_AE_conv3d.ipynb
 MainCodes/4_Predicting_ConvLSTM.ipynb
 MainCodes/4_Predicting_AE.ipynb
 MainCodes/4_Predicting_basicModel_AAE.ipynb
+MainCodes/4_Predicting_NewTraining_nobuilding_rotation.ipynb
+MainCodes/4_Predicting_NewTraining_nobuilding.ipynb
+/home/dg321/gitTest/PRI/irp/FlowPassBuilding/MainCodes/4_Predicting_NewTraining_nobuilding.ipynb
